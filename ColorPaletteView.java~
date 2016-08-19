@@ -1,0 +1,55 @@
+import javax.swing.*;
+import java.awt.*;
+import java.util.Observer;
+
+/**
+ * Created by andrewfrolkin on 2016-06-06.
+ */
+public class ColorPaletteView extends JPanel implements Observer {
+    // the model that this view is showing
+    private ColorPalleteModel model;
+
+    private JToggleButton col1;
+    private JToggleButton col2;
+    private JToggleButton col3;
+    private JToggleButton col4;
+    private JToggleButton col5;
+    private JToggleButton col6;
+
+    private ButtonGroup colsGroup;
+
+    ColorPaletteView(ColorPalleteModel model_) {
+        // set the model
+        model = model_;
+
+        col1 = new JToggleButton("a");
+        col2 = new JToggleButton("b");
+        col3 = new JToggleButton("c");
+        col4 = new JToggleButton("d");
+        col5 = new JToggleButton("e");
+        col6 = new JToggleButton("f");
+
+        colsGroup = new ButtonGroup();
+        colsGroup.add(col1);
+        colsGroup.add(col2);
+        colsGroup.add(col3);
+        colsGroup.add(col4);
+        colsGroup.add(col5);
+        colsGroup.add(col6);
+
+        this.setLayout(new GridLayout(3,2));
+
+        this.add(col1);
+        this.add(col2);
+        this.add(col3);
+        this.add(col4);
+        this.add(col5);
+        this.add(col6);
+    }
+
+    // Observer interface
+    @Override
+    public void update(Observable arg0, Object arg1) {
+        System.out.println("View: update");
+    }
+}
